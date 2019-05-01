@@ -1,0 +1,52 @@
+﻿@model List<eCommerceApp.Models.tblProduct>
+
+@{
+    Layout = null;
+
+    int i = 1;
+
+    int left = 142;
+    int top = 120;
+
+    string lpx = left + "px";
+    string tpx = top + "px";
+}
+
+<html>
+<head>
+    <title>PRINT</title>
+</head>
+<body style="margin: 0;">
+    <img src="~/sticker.jpg" />
+
+    @foreach (var item in Model.Take(50))
+    {
+        //string uid1 = item.UID.Substring(0, 8);
+        //string uid2 = item.UID.Substring(item.UID.Length - 12);
+        string qrcode = "/QR/" + item.UID + ".jpg";
+
+        <div style="left: @lpx; position: absolute; top: @tpx;">
+            <img src="@qrcode" style="height: 180px; width: 180px;" />
+            <span style="font-size: 32px;margin-left: 120px; margin-top: -12px; position: absolute;">@item.GTN</span>
+            <span style="font-size: 32px;margin-left: 300px; margin-top: -150px; position: absolute;">@item.UID</span>
+            @*<span style="font-size: 32px;margin-left: 300px; margin-top: -120px;position: absolute;"><b>@uid2</b></span>*@
+            <span style="font-size: 32px;margin-left: 300px; margin-top: -65px; position: absolute;">@item.LOT</span>
+            <span style="font-size: 32px;margin-left: 300px; margin-top: -22px; position: absolute;">2020-01</span>
+        </div>
+
+        left = left + 768;
+        lpx = left + "px";
+
+        if (i % 5 == 0)
+        {
+            left = 142;
+            lpx = left + "px";
+
+            top = top + 431;
+            tpx = top + "px";
+        }
+
+        i++;
+    }
+</body>
+</html>

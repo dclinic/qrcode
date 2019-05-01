@@ -1,0 +1,30 @@
+﻿@model List<eCommerceApp.Models.tblProduct>
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>PRINT</title>
+</head>
+<body style="margin: 0;">
+    <img src="~/one.png" />
+
+    @foreach (var item in Model.Take(1))
+    {
+        string uid1 = item.UID.Substring(0, 8);
+        string uid2 = item.UID.Substring(item.UID.Length - 12);
+        string qrcode = "/QR/" + item.UID + ".jpg";
+
+        <div style="left: 105px; position: absolute; top: 45px;">
+            <img src="@qrcode" style="height: 140px; width: 140px;" />
+            <span style="font-size: 28px;margin-left: 100px; margin-top: -9px; position: absolute;">@item.GTN</span>
+            <span style="font-size: 28px;margin-left: 240px; margin-top: -117px; position: absolute;">@uid1</span>
+            <span style="font-size: 28px;margin-left: 240px; margin-top: -92px;position: absolute;"><b>@uid2</b></span>
+            <span style="font-size: 28px;margin-left: 240px; margin-top: -54px; position: absolute;">@item.LOT</span>
+            <span style="font-size: 28px;margin-left: 240px; margin-top: -22px; position: absolute;">2020-01</span>
+        </div>
+    }
+</body>
+</html>

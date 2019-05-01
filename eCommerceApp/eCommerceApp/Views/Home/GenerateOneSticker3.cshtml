@@ -1,0 +1,25 @@
+﻿@model eCommerceApp.Models.tblProduct
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>PRINT</title>
+</head>
+<body style="margin: 0;">
+    <img src="~/one3.jpg" />
+
+    @{
+        string qrcode = "/QR/" + Model.UID + ".png";
+        <div style="left: 85px; position: absolute; top: 54px;">
+            <img src="@qrcode" style="height: 180px; width: 180px;" />
+            <span style="font-size: 26px;margin-left: 115px; margin-top: -4px; position: absolute;">@Model.GTN</span>
+            <span style="font-size: 26px;margin-left: 295px; margin-top: -132px; position: absolute;">@Model.UID</span>
+            <span style="font-size: 26px;margin-left: 295px; margin-top: -80px; position: absolute;">@Model.LOT</span>
+            <span style="font-size: 26px;margin-left: 295px; margin-top: -24px; position: absolute;">@Model.Expiry.Value.ToString("yyyy-MM-00")</span>
+        </div>
+    }
+</body>
+</html>

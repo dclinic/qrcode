@@ -1,0 +1,83 @@
+﻿@model eCommerceApp.Models.tblProduct
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <div style="text-align:center; margin-top:5%;">
+        <img src="@Model.ImageUrl" alt="Image not found" style="height:200px;width:150px" />
+    </div>
+    <div style="text-align:center;">
+        <img src="~/prod/success.png" style="height:36px;width: 36px;" />
+    </div>
+    <div style="text-align:center;">
+        <span style="color:green">Genuine Product</span>
+    </div>
+
+    <table class="table" style="background-color: white; margin-top:5%;">
+        <tr>
+            <th>Product Name:</th>
+            <td>@Model.ProductName</td>
+        </tr>
+        <tr>
+            <th>Brand:</th>
+            <td>@Model.Brand</td>
+        </tr>
+        <tr>
+            <th>Weight:</th>
+            <td>@Model.Weight</td>
+        </tr>
+        <tr>
+            <th>Origin:</th>
+            <td>@Model.Origin</td>
+        </tr>
+        <tr>
+            <th>GTN:</th>
+            <td>@Model.GTN</td>
+        </tr>
+        <tr>
+            <th>UID:</th>
+            <th>@Model.UID</th>
+        </tr>
+        @if (Model.Brand == "Awazeh")
+        {
+            <tr>
+                <th>GTIN:</th>
+                <td>@Model.ScratchID</td>
+            </tr>
+        }
+        <tr>
+            <th>LOT:</th>
+            <td>@Model.LOT</td>
+        </tr>
+        @if (Model.Brand == "Highly")
+        {
+            <tr>
+                <th>Expiry:</th>
+                <td>@Model.Expiry.Value.ToString("yy-MM-00")</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>Expiry:</th>
+                <td>@Model.Expiry.Value.ToString("yyyy/MM")</td>
+            </tr>
+        }
+        <tr>
+            <th>Imported By:</th>
+            <td>@Model.ImportedBy</td>
+        </tr>
+    </table>
+}
+else
+{
+    <div style="text-align:center; margin-top:5%;">
+        <img src="~/prod/fake.png" style="height:36px;width: 36px;" />
+    </div>
+    <div style="text-align:center;">
+        <span style="color:red">Fake Product</span>
+    </div>
+}
